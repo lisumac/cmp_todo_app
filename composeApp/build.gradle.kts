@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.sqldelight)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -24,24 +26,42 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
+            // This is where preview tooling belongs
             implementation(libs.compose.uiToolingPreview)
+
             implementation(libs.androidx.activity.compose)
+            implementation(libs.koin.android)
+            implementation(libs.sqldelight.android)
+            implementation(libs.navigation.compose)
         }
+
         commonMain.dependencies {
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
             implementation(libs.compose.ui)
             implementation(libs.compose.components.resources)
-            implementation(libs.compose.uiToolingPreview)
+
+            // REMOVED: implementation(libs.compose.uiToolingPreview)
+            // Previews in commonMain are not supported for iOS targets yet.
+
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.kotlinx.serialization)
+            implementation(libs.kotlinx.date.time)
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.koin.navigation3)
         }
-        iosMain.dependencies {
 
+        iosMain.dependencies {
+            // Add iOS specific dependencies here if needed
+            implementation(libs.sqldelight.ios)
+           // implementation(libs.navigation2)
         }
     }
 }
@@ -76,4 +96,10 @@ android {
 dependencies {
     debugImplementation(libs.compose.uiTooling)
 }
-
+sqldelight {
+    databases {
+        create("MyDatabase") { // You can rename "MyDatabase" to whatever you like
+            packageName.set("org.rdk.todo.db") // This is where your code will be generated
+        }
+    }
+}
