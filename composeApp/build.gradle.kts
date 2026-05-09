@@ -36,6 +36,10 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.sqldelight.android)
             implementation(libs.navigation.compose)
+            implementation(libs.navigation3.runtime)
+            implementation(libs.navigation3.ui)
+            implementation(libs.navigation3.viewmodel)
+            implementation(libs.navigation3.adaptive)
         }
 
         commonMain.dependencies {
