@@ -16,5 +16,6 @@ data class ToDoTask @OptIn(ExperimentalUuidApi::class) constructor(
 enum class Priority{
     Low,
     Medium,
-    High
+    High,
+    None
 }

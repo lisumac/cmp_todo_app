@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -30,7 +31,7 @@ import org.rdk.todo.utill.Alpha
 @Composable()
 fun TaskCard(modifier: Modifier = Modifier, task: ToDoTask, onclick: (String) -> Unit) {
     Card(
-        Modifier.fillMaxSize().clip(RoundedCornerShape(16.dp)).clickable {
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).clickable {
             onclick(task.id)
         },
         colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surface),
@@ -61,6 +62,7 @@ fun TaskCard(modifier: Modifier = Modifier, task: ToDoTask, onclick: (String) ->
                     )
             }
         }
+        PriorityChip(priority = task.priority , isCompleted = true)
 
     }
 
