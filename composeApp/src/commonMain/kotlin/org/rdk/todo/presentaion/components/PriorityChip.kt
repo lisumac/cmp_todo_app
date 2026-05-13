@@ -1,4 +1,4 @@
-package org.rdk.todo.presentaion
+package org.rdk.todo.presentaion.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import org.rdk.todo.presentaion.PriorityColors.getColor
+import org.rdk.todo.presentaion.components.PriorityColors.getColor
 import org.rdk.todo.utill.Alpha
 
 @Composable

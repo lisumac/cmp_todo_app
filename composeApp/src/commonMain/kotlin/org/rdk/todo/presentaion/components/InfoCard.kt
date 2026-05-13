@@ -1,4 +1,4 @@
-package org.rdk.todo.presentaion
+package org.rdk.todo.presentaion.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
